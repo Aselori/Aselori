@@ -61,16 +61,6 @@ PIXEL_SIZE = 8
 PIXEL_GAP = 2
 LETTER_GAP = 14
 
-BOOT_LINES = [
-    ("overlay", "BIOS v1.0.2 — System Check"),
-    ("fg",      "Memory .......... 16384 MB OK"),
-    ("fg",      "Storage ......... 512 GB NVMe OK"),
-    ("fg",      "GPU ............. AMD Radeon OK"),
-    ("green",   "All checks passed."),
-    ("fg",      ""),
-    ("blue",    "Loading Arch Linux..."),
-]
-
 PALETTE_COLORS = ["red", "green", "yellow", "blue", "mauve", "teal", "peach", "pink"]
 
 # ── Layout ────────────────────────────────────────────────────
@@ -84,10 +74,6 @@ INFO_X = 320
 MAX_LABEL = max(len(label) for label, _, _ in INFO_LINES)
 
 # ── Timing (milliseconds) ────────────────────────────────────
-BOOT_CURSOR_BLINK = 600
-BOOT_LINE_DELAY = 200
-BOOT_HOLD = 600
-TRANSITION = 300
 PROMPT_BLINK = 500
 CHAR_DELAY = 70
 TYPE_HOLD = 300
@@ -112,19 +98,6 @@ def generate_svg():
 
     # ── Build timeline ────────────────────────────────────────
     t = 0
-
-    # Boot: cursor blinks
-    boot_start = t
-    t += BOOT_CURSOR_BLINK
-
-    # Boot lines appear
-    boot_lines_start = t
-    t += len(BOOT_LINES) * BOOT_LINE_DELAY
-    t += BOOT_HOLD
-
-    # Transition (clear)
-    transition_start = t
-    t += TRANSITION
 
     # Prompt appears + cursor blink
     prompt_start = t
@@ -169,21 +142,7 @@ def generate_svg():
   .cursor {{ animation: blink 1s step-end infinite; }}
 ''')
 
-    # Boot phase: each line fades in, then the whole boot phase fades out
-    for i in range(len(BOOT_LINES)):
-        delay_in = boot_lines_start + i * BOOT_LINE_DELAY
-        svg_parts.append(f'  .boot-line-{i} {{ opacity:0; animation: fadeIn 0.05s {delay_in}ms forwards; }}')
-
-    # Boot cursor
-    svg_parts.append(f'  .boot-cursor {{ opacity:0; animation: fadeIn 0.01s {boot_start}ms forwards; }}')
-
-    # Entire boot screen disappears
-    svg_parts.append(f'''
-  @keyframes bootOut {{ from {{ opacity:1 }} to {{ opacity:0 }} }}
-  .boot-screen {{ animation: bootOut 0.01s {transition_start}ms forwards; }}
-''')
-
-    # Main screen appears after transition
+    # Main screen appears
     svg_parts.append(f'  .main-screen {{ opacity:0; animation: fadeIn 0.01s {prompt_start}ms forwards; }}')
 
     # Prompt
@@ -212,22 +171,6 @@ def generate_svg():
 
     # Background
     svg_parts.append(f'<rect class="bg" width="{WIDTH}" height="{height}" />')
-
-    # ── Boot screen ───────────────────────────────────────────
-    svg_parts.append('<g class="boot-screen">')
-
-    # Boot cursor
-    svg_parts.append(f'  <rect class="boot-cursor cursor" x="{PAD_X}" y="{PAD_Y}" width="10" height="{LINE_H - 4}" fill="{COLORS["fg"]}" />')
-
-    # Boot lines
-    for i, (color_name, text) in enumerate(BOOT_LINES):
-        if not text:
-            continue
-        y = PAD_Y + i * LINE_H + FONT_SIZE
-        color = COLORS[color_name]
-        svg_parts.append(f'  <text class="t boot-line-{i}" x="{PAD_X}" y="{y}" fill="{color}">{escape_xml(text)}</text>')
-
-    svg_parts.append('</g>')
 
     # ── Main screen ───────────────────────────────────────────
     svg_parts.append('<g class="main-screen">')

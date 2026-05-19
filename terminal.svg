@@ -7,54 +7,33 @@
   .t { font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 16px; }
   .cursor { animation: blink 1s step-end infinite; }
 
-  .boot-line-0 { opacity:0; animation: fadeIn 0.05s 600ms forwards; }
-  .boot-line-1 { opacity:0; animation: fadeIn 0.05s 800ms forwards; }
-  .boot-line-2 { opacity:0; animation: fadeIn 0.05s 1000ms forwards; }
-  .boot-line-3 { opacity:0; animation: fadeIn 0.05s 1200ms forwards; }
-  .boot-line-4 { opacity:0; animation: fadeIn 0.05s 1400ms forwards; }
-  .boot-line-5 { opacity:0; animation: fadeIn 0.05s 1600ms forwards; }
-  .boot-line-6 { opacity:0; animation: fadeIn 0.05s 1800ms forwards; }
-  .boot-cursor { opacity:0; animation: fadeIn 0.01s 0ms forwards; }
-
-  @keyframes bootOut { from { opacity:1 } to { opacity:0 } }
-  .boot-screen { animation: bootOut 0.01s 2600ms forwards; }
-
-  .main-screen { opacity:0; animation: fadeIn 0.01s 2900ms forwards; }
-  .prompt { opacity:0; animation: fadeIn 0.01s 2900ms forwards; }
-  .char-0 { opacity:0; animation: fadeIn 0.01s 3400ms forwards; }
-  .char-1 { opacity:0; animation: fadeIn 0.01s 3470ms forwards; }
-  .char-2 { opacity:0; animation: fadeIn 0.01s 3540ms forwards; }
-  .char-3 { opacity:0; animation: fadeIn 0.01s 3610ms forwards; }
-  .char-4 { opacity:0; animation: fadeIn 0.01s 3680ms forwards; }
-  .char-5 { opacity:0; animation: fadeIn 0.01s 3750ms forwards; }
-  .char-6 { opacity:0; animation: fadeIn 0.01s 3820ms forwards; }
-  .char-7 { opacity:0; animation: fadeIn 0.01s 3890ms forwards; }
-  .char-8 { opacity:0; animation: fadeIn 0.01s 3960ms forwards; }
-  .pixel-art { opacity:0; animation: fadeIn 0.15s 5780ms forwards; }
-  .ff-header { opacity:0; animation: fadeIn 0.05s 4330ms forwards; }
-  .info-0 { opacity:0; animation: fadeIn 0.05s 4480ms forwards; }
-  .info-1 { opacity:0; animation: fadeIn 0.05s 4580ms forwards; }
-  .info-2 { opacity:0; animation: fadeIn 0.05s 4680ms forwards; }
-  .info-3 { opacity:0; animation: fadeIn 0.05s 4780ms forwards; }
-  .info-4 { opacity:0; animation: fadeIn 0.05s 4880ms forwards; }
-  .info-5 { opacity:0; animation: fadeIn 0.05s 4980ms forwards; }
-  .info-6 { opacity:0; animation: fadeIn 0.05s 5080ms forwards; }
-  .info-7 { opacity:0; animation: fadeIn 0.05s 5180ms forwards; }
-  .info-8 { opacity:0; animation: fadeIn 0.05s 5280ms forwards; }
-  .info-9 { opacity:0; animation: fadeIn 0.05s 5380ms forwards; }
-  .info-10 { opacity:0; animation: fadeIn 0.05s 5480ms forwards; }
-  .palette { opacity:0; animation: fadeIn 0.1s 5580ms forwards; }
+  .main-screen { opacity:0; animation: fadeIn 0.01s 0ms forwards; }
+  .prompt { opacity:0; animation: fadeIn 0.01s 0ms forwards; }
+  .char-0 { opacity:0; animation: fadeIn 0.01s 500ms forwards; }
+  .char-1 { opacity:0; animation: fadeIn 0.01s 570ms forwards; }
+  .char-2 { opacity:0; animation: fadeIn 0.01s 640ms forwards; }
+  .char-3 { opacity:0; animation: fadeIn 0.01s 710ms forwards; }
+  .char-4 { opacity:0; animation: fadeIn 0.01s 780ms forwards; }
+  .char-5 { opacity:0; animation: fadeIn 0.01s 850ms forwards; }
+  .char-6 { opacity:0; animation: fadeIn 0.01s 920ms forwards; }
+  .char-7 { opacity:0; animation: fadeIn 0.01s 990ms forwards; }
+  .char-8 { opacity:0; animation: fadeIn 0.01s 1060ms forwards; }
+  .pixel-art { opacity:0; animation: fadeIn 0.15s 2880ms forwards; }
+  .ff-header { opacity:0; animation: fadeIn 0.05s 1430ms forwards; }
+  .info-0 { opacity:0; animation: fadeIn 0.05s 1580ms forwards; }
+  .info-1 { opacity:0; animation: fadeIn 0.05s 1680ms forwards; }
+  .info-2 { opacity:0; animation: fadeIn 0.05s 1780ms forwards; }
+  .info-3 { opacity:0; animation: fadeIn 0.05s 1880ms forwards; }
+  .info-4 { opacity:0; animation: fadeIn 0.05s 1980ms forwards; }
+  .info-5 { opacity:0; animation: fadeIn 0.05s 2080ms forwards; }
+  .info-6 { opacity:0; animation: fadeIn 0.05s 2180ms forwards; }
+  .info-7 { opacity:0; animation: fadeIn 0.05s 2280ms forwards; }
+  .info-8 { opacity:0; animation: fadeIn 0.05s 2380ms forwards; }
+  .info-9 { opacity:0; animation: fadeIn 0.05s 2480ms forwards; }
+  .info-10 { opacity:0; animation: fadeIn 0.05s 2580ms forwards; }
+  .palette { opacity:0; animation: fadeIn 0.1s 2680ms forwards; }
 </style>
 <rect class="bg" width="880" height="504" />
-<g class="boot-screen">
-  <rect class="boot-cursor cursor" x="24" y="20" width="10" height="22" fill="#cdd6f4" />
-  <text class="t boot-line-0" x="24" y="36" fill="#6c7086">BIOS v1.0.2 — System Check</text>
-  <text class="t boot-line-1" x="24" y="62" fill="#cdd6f4">Memory .......... 16384 MB OK</text>
-  <text class="t boot-line-2" x="24" y="88" fill="#cdd6f4">Storage ......... 512 GB NVMe OK</text>
-  <text class="t boot-line-3" x="24" y="114" fill="#cdd6f4">GPU ............. AMD Radeon OK</text>
-  <text class="t boot-line-4" x="24" y="140" fill="#a6e3a1">All checks passed.</text>
-  <text class="t boot-line-6" x="24" y="192" fill="#89b4fa">Loading Arch Linux...</text>
-</g>
 <g class="main-screen">
   <text class="t prompt" x="24" y="36" fill="#a6e3a1" font-weight="bold">❯ </text>
   <text class="t char-0" x="52.8" y="36" fill="#cdd6f4">f</text>
