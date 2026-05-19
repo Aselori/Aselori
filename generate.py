@@ -139,10 +139,6 @@ def generate_svg():
     # Fastfetch output
     ff_start = t
 
-    # Pixel art appears
-    art_appear = t
-    t += ART_DELAY
-
     # Header + separator
     header_start = t
     t += INFO_HEADER_DELAY
@@ -154,6 +150,10 @@ def generate_svg():
     # Palette
     palette_start = t
     t += PALETTE_DELAY
+
+    # Pixel art appears after all fastfetch output
+    art_appear = t
+    t += ART_DELAY
 
     total_duration = t
 
@@ -246,7 +246,7 @@ def generate_svg():
     ff_y_base = PAD_Y + LINE_H + 16
 
     # Embedded GIF image
-    with open("/home/itami/Downloads/one-piece-pixel.gif", "rb") as f:
+    with open("/home/itami/Downloads/puck-wave.gif", "rb") as f:
         gif_b64 = base64.b64encode(f.read()).decode()
     img_w, img_h = 180, 150  # display size (scaled up from 120x100)
     img_x = ART_X
