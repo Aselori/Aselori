@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 420" width="840" height="420" role="img" aria-labelledby="t d">
+<title id="t">Aselori status</title>
+<desc id="d">Status page for Aselori: API, data, platform and client are operational. Cloud (AWS EC2, S3, networking) is in progress.</desc>
+<style>
+  :root { --ink:#1f2328; --muted:#59636e; --rule:#d1d9e0; --ok:#1a7f37; --wip:#9a6700; --wipbg:#fff8c5; }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink:#e6edf3; --muted:#9198a1; --rule:#3d444d; --ok:#3fb950; --wip:#d29922; --wipbg:#2e2614; }
+  }
+  text { font-family: "iA Writer Quattro S", "Noto Sans", system-ui, sans-serif; fill: var(--ink); }
+  .name { font-size: 30px; font-weight: 700; }
+  .summary { font-size: 19px; }
+  .muted { fill: var(--muted); }
+  .comp { font-size: 15px; font-weight: 700; }
+  .tools { font-size: 15px; }
+  .st { font-size: 14px; }
+  .ok { fill: var(--ok); }
+  .wip { fill: var(--wip); }
+  .rule { stroke: var(--rule); stroke-width: 1; }
+  .wipbg { fill: var(--wipbg); }
+  .small { font-size: 13px; }
+  .pulse { fill: none; stroke: var(--wip); stroke-width: 2; transform-box: fill-box; transform-origin: center; animation: pulse 2.4s ease-out infinite; }
+  @keyframes pulse { 0% { transform: scale(1); opacity: .9 } 70%,100% { transform: scale(2.6); opacity: 0 } }
+  @media (prefers-reduced-motion: reduce) { .pulse { animation: none; opacity: 0; } }
+</style>
+
+<text class="name" x="24" y="48">Aselori</text>
+<text class="small muted" x="816" y="48" text-anchor="end">Monterrey, MX</text>
+<text class="summary" x="24" y="88">Backend operational. Cloud in progress.</text>
+
+<!-- normal rows stay quiet; only the exception gets color and motion -->
+<line class="rule" x1="24" x2="816" y1="122" y2="122"/>
+<text class="comp" x="24" y="150">API</text>
+<text class="tools" x="140" y="150">Node.js, Express, Fastify. REST, auth.</text>
+<text class="st muted" x="722" y="150">operational</text>
+<circle class="ok" cx="710" cy="145" r="4"/>
+
+<line class="rule" x1="24" x2="816" y1="168" y2="168"/>
+<text class="comp" x="24" y="196">Data</text>
+<text class="tools" x="140" y="196">PostgreSQL, Prisma. Schema design.</text>
+<text class="st muted" x="722" y="196">operational</text>
+<circle class="ok" cx="710" cy="191" r="4"/>
+
+<line class="rule" x1="24" x2="816" y1="214" y2="214"/>
+<text class="comp" x="24" y="242">Platform</text>
+<text class="tools" x="140" y="242">Docker, Linux, GitHub Actions. Bash, Python.</text>
+<text class="st muted" x="722" y="242">operational</text>
+<circle class="ok" cx="710" cy="237" r="4"/>
+
+<line class="rule" x1="24" x2="816" y1="260" y2="260"/>
+<text class="comp" x="24" y="288">Client</text>
+<text class="tools" x="140" y="288">Next.js, TypeScript. Tested with Playwright.</text>
+<text class="st muted" x="722" y="288">operational</text>
+<circle class="ok" cx="710" cy="283" r="4"/>
+
+<rect class="wipbg" x="24" y="306" width="792" height="46" rx="4"/>
+<text class="comp wip" x="36" y="334">Cloud</text>
+<text class="tools" x="140" y="334">AWS EC2, S3. Networking.</text>
+<text class="st wip" x="722" y="334">in progress</text>
+<circle class="wip" cx="710" cy="329" r="4"/>
+<circle class="pulse" cx="710" cy="329" r="4"/>
+
+<text class="small muted" x="24" y="390">Next update: when a service of mine runs on EC2.</text>
+<text class="small muted" x="816" y="390" text-anchor="end">Last deploy 17 hours ago</text>
+</svg>
